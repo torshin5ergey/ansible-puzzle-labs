@@ -1,0 +1,28 @@
+- name: Archive directory and send via email
+  hosts: localhost
+  vars:
+    directory: "/home/sergey/ansible-puzzle/homelab-vbox-k8s/ansible"
+
+  tasks:
+    - name: Compress "{{ directory }}"
+      # https://docs.ansible.com/ansible/2.9/modules/archive_module.html#archive-module
+      archive:
+        path: "{{ directory }}/*"
+        dest: "{{ directory }}.zip"
+        exclude_path: "{{ directory }}/awx"
+        format: zip
+        force_archive: yes
+        mode: 0640
+
+    - name: Send created archive via Gmail
+      # https://docs.ansible.com/ansible/2.9/modules/mail_module.html#mail-module
+      mail:
+        host: smtp.gmail.com
+        port: 587
+        username: "{{ mail_username }}"
+        password: "{{ mail_password }}"
+        secure: starttls
+        to: "{{ mail_username }}"
+        subject: "Ansible Puzzle 4.1. Task 7"
+        body: "Sending my ansible-puzzle stuff"
+        attach: "{{ directory }}.zip"

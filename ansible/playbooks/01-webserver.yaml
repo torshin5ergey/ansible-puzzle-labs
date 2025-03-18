@@ -1,0 +1,27 @@
+- name: Setup apache2 webserver
+  hosts: web
+  become: yes
+
+  tasks:
+    - name: Install apache2 and ufw
+      apt:
+        name:
+          - apache2
+          - ufw
+        state: present
+        update_cache: yes
+
+    - name: Start and enable services
+      systemd:
+        name: "{{ item }}"
+        state: started
+        enabled: yes
+      loop:
+        - apache2
+        - ufw
+
+    - name: Ensure port 80 is open on the ufw
+      ufw:
+        rule: allow
+        port: "80"
+        proto: tcp

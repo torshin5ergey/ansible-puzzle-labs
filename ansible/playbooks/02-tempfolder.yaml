@@ -1,0 +1,12 @@
+- name: Create temp folder on all servers except 'db' group
+  hosts: all:!db:!controller
+  become: yes
+
+  tasks:
+    - name: Create tempfolder
+      file:
+        path: /var/tempfolder
+        state: directory
+        mode: "01755"
+        owner: vagrant
+        group: vagrant

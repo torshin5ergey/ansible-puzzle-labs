@@ -1,0 +1,23 @@
+- name: Set /etc/motd content
+  hosts: all:!controller
+  become: yes
+  ## use variables from vars.yaml file
+  # vars_files:
+  #   - vars.yaml
+  ## or in place
+  # vars:
+  #   motd_content: "custom text\n"
+
+  tasks:
+    - name: Set content of /etc/motd
+      copy:
+        dest: /etc/motd
+        content: "{{ motd_content }}"
+        mode: 0644
+    - name: Print result
+
+      command:
+        cmd: "cat /etc/motd"
+      register: result
+    - debug:
+        var: result.stdout
