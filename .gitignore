@@ -1,6 +1,5 @@
 # Ansible
 .ansible
-ansible/inventory/*
 
 # Terraform
 terraform/.terraform/
