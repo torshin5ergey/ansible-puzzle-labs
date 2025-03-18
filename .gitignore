@@ -1,0 +1,13 @@
+# Ansible
+.ansible
+ansible/inventory/*
+
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/.terraform.lock.hcl
+terraform/virtualbox.box
+
+# ansible.puzzle tasks
+*.zip
