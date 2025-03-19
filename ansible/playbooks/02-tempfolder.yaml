@@ -1,10 +1,11 @@
+---
 - name: Create temp folder on all servers except 'db' group
   hosts: all:!db:!controller
-  become: yes
+  become: true
 
   tasks:
     - name: Create tempfolder
-      file:
+      ansible.builtin.file:
         path: /var/tempfolder
         state: directory
         mode: "01755"
