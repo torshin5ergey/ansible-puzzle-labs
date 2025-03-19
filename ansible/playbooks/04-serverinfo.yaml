@@ -1,0 +1,19 @@
+---
+- name: Server ifno
+  hosts: nodes
+  become: true
+
+  tasks:
+    - name: Create serverinfo.txt file from template
+      ansible.builtin.template:
+        src: serverinfo.j2
+        dest: /root/serverinfo.txt
+        mode: "0644"
+
+    - name: Get file content
+      ansible.builtin.command: "cat /root/serverinfo.txt"
+      register: output
+      changed_when: output.rc != 0
+    - name: Print file content
+      ansible.builtin.debug:
+        var: output.stdout

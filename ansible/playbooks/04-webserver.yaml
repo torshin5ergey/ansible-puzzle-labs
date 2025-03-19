@@ -4,23 +4,28 @@
   become: true
 
   tasks:
+    # Install apache2
     - name: Install apache2 and ufw
       ansible.builtin.apt:
+        # Install both packages
         name:
           - apache2
           - ufw
         state: present
         update_cache: true
 
+    # Start and enable apache2
     - name: Start and enable services
       ansible.builtin.systemd:
         name: "{{ item }}"
         state: started
         enabled: true
+      # [apache2, ufw] -> item
       loop:
         - apache2
         - ufw
 
+    # Open 80 port on ufw firewall
     - name: Ensure port 80 is open on the ufw
       community.general.ufw:
         rule: allow

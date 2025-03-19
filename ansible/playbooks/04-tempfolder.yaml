@@ -1,4 +1,5 @@
 ---
+# Create temporary folder /var/tampfolder on all, excluding db
 - name: Create temp folder on all servers except 'db' group
   hosts: all:!db:!controller
   become: true
@@ -8,6 +9,7 @@
       ansible.builtin.file:
         path: /var/tempfolder
         state: directory
+        # 1 - sticky bit (only owner group can rename/delete)
         mode: "01755"
         owner: vagrant
         group: vagrant

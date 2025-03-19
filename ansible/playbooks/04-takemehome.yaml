@@ -1,22 +1,27 @@
+---
 - name: Archive directory and send via email
   hosts: localhost
+  vars_files:
+    - mail_data.yaml
   vars:
-    directory: "/home/sergey/ansible-puzzle/homelab-vbox-k8s/ansible"
+    directory: "/home/sergey/ansible-puzzle-labs/ansible"
 
   tasks:
+    # Archive local directory
     - name: Compress "{{ directory }}"
       # https://docs.ansible.com/ansible/2.9/modules/archive_module.html#archive-module
-      archive:
+      community.general.archive:
         path: "{{ directory }}/*"
         dest: "{{ directory }}.zip"
+        # Exclude awx subdirectory
         exclude_path: "{{ directory }}/awx"
         format: zip
-        force_archive: yes
-        mode: 0640
+        force_archive: true
+        mode: "0640"
 
     - name: Send created archive via Gmail
       # https://docs.ansible.com/ansible/2.9/modules/mail_module.html#mail-module
-      mail:
+      community.general.mail:
         host: smtp.gmail.com
         port: 587
         username: "{{ mail_username }}"

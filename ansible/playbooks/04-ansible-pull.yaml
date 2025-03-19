@@ -1,0 +1,20 @@
+---
+- name: Setup host for ansible-pull
+  hosts: nodes
+  become: true
+
+  tasks:
+    - name: Install ansible
+      ansible.builtin.apt:
+        name: ansible
+        state: present
+        update_cache: true
+
+    - name: Get ansible installation version
+      ansible.builtin.command: "ansible --version"
+      register: output
+      changed_when: output.rc != 0
+
+    - name: Print ansible version
+      ansible.builtin.debug:
+        var: output.stdout

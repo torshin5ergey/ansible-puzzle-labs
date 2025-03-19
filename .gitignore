@@ -10,3 +10,4 @@ terraform/virtualbox.box
 
 # ansible.puzzle tasks
 *.zip
+mail_data.yaml

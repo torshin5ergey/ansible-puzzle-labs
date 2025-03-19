@@ -1,0 +1,3 @@
+{% for host in groups['nodes'] %}
+{{ hostvars[host].ansible_hostname }}: OS: {{ hostvars[host].ansible_lsb.description }} IP: {{ hostvars[host].ansible_default_ipv4.address }} Virtualization Role: {{ hostvars[host].ansible_virtualization_role }}
+{% endfor %}

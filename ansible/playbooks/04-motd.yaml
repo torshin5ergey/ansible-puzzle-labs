@@ -1,19 +1,29 @@
 ---
 - name: Set /etc/motd content
-  hosts: all:!controller
+  hosts: nodes
   become: true
-  ## use variables from vars.yaml file
-  # vars_files:
-  #   - vars.yaml
-  ## or in place
+  ## Use variable from vars.yaml file
+  vars_files:
+    - vars.yaml
+  ## Or in place
   # vars:
   #   motd_content: "custom text\n"
 
   tasks:
+    # Set content of file to variable {{ motd_content }}
     - name: Set content of /etc/motd
       ansible.builtin.copy:
         dest: /etc/motd
         content: "{{ motd_content }}"
+        mode: "0644"
+      # skipping
+      when: set_content is defined and set_content == "1"
+
+    # Set content of file using template module
+    - name: Set content of /etc/motd
+      ansible.builtin.template:
+        src: motd.j2
+        dest: /etc/motd
         mode: "0644"
 
     - name: Get result
@@ -21,7 +31,6 @@
       ansible.builtin.command: "cat /etc/motd"
       register: result
       changed_when: result.rc != 0
-
     - name: Print result
       ansible.builtin.debug:
         var: result.stdout

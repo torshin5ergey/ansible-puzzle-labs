@@ -1,0 +1,62 @@
+---
+- name: Userplay
+  hosts: nodes
+  become: true
+  vars:
+    users:
+      - name: jim
+        food: pizza
+      - name: sabrina
+        food: burger
+      - name: hans
+        food: vegan
+      - name: eveline
+        food: burger
+      - name: santos
+
+  tasks:
+    - name: Create file with content from template
+      ansible.builtin.template:
+        src: userplay.j2
+        dest: /etc/dinner.txt
+        mode: "0644"
+      when: inventory_hostname == "ap-worker-node1"
+
+    - name: Get created content
+      ansible.builtin.command: "cat /etc/dinner.txt"
+      register: output
+      changed_when: output.rc != 0
+      when: inventory_hostname == "ap-worker-node1"
+    - name: Print content
+      ansible.builtin.debug:
+        var: output.stdout_lines
+      when: inventory_hostname == "ap-worker-node1"
+
+    - name: Install zsh
+      ansible.builtin.apt:
+        name: zsh
+        state: present
+        update_cache: true
+      when: inventory_hostname == "ap-worker-node2"
+
+    - name: Create groups
+      # https://docs.ansible.com/ansible/2.9/modules/group_module.html#group-module
+      ansible.builtin.group:
+        name: "{{ item.food | default('kebab') }}"
+        state: present
+      loop: "{{ users }}"
+      when: inventory_hostname == "ap-worker-node2"
+
+    - name: Create users with associated groups
+      ansible.builtin.user:
+        name: "{{ item.name }}"
+        group: "{{ item.food | default('kebab') }}"
+        # append group
+        append: true
+        password: "{{ 'N0t_5o_s3cur3' | password_hash('sha512') }}"
+        update_password: on_create
+        # disable login for user "santos"
+        shell: "{{ '/usr/sbin/nologin' if item.name == 'santos' else '/bin/zsh' }}"
+        state: present
+      loop: "{{ users }}"
+      when: inventory_hostname == "ap-worker-node2"
