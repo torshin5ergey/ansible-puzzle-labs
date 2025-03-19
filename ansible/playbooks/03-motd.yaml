@@ -15,7 +15,7 @@
         content: "{{ motd_content }}"
         mode: 0644
     - name: Print result
-
+      # https://docs.ansible.com/ansible/2.9/modules/command_module.html#command-module
       command:
         cmd: "cat /etc/motd"
       register: result
