@@ -1,0 +1,27 @@
+---
+# Tasks 4-5
+- name: Service handler
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Install apache2
+      ansible.builtin.apt:
+        name: apache2
+        state: present
+        update_cache: true
+
+    - name: Get apache2 service status
+      ansible.builtin.command: "systemctl status apache2"
+      register: status
+      # error when status has 'failed' text
+      failed_when: "'failed' in status.stdout"
+
+    - name: Print apache2 service status
+      ansible.builtin.debug:
+        var: status.stdout
+
+    - name: Start apache2 service
+      ansible.builtin.command: "systemctl start apache2"
+      # if active - skip
+      when: "'Active: active (running)' not in status.stdout"
