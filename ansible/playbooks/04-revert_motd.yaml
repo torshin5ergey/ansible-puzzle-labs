@@ -1,0 +1,22 @@
+---
+- name: Clean up ansible-pull and cronjob config
+  hosts: ap-worker-node1
+  become: true
+
+  tasks:
+    - name: Uninstall Ansible
+      ansible.builtin.apt:
+        name: ansible
+        state: absent
+        purge: true
+        autoremove: true
+
+    - name: Remove cronjob
+      ansible.builtin.file:
+        path: /etc/cron.d/ansible-pull
+        state: absent
+
+    - name: Remove motd
+      ansible.builtin.file:
+        path: /etc/motd
+        state: absent

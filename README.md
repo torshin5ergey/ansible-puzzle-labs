@@ -205,5 +205,35 @@ ansible web -b -m systemd -a "name=apache2 state=restarted"
 
 https://ansible.puzzle.ch/docs/04/04/
 
-### Task 1
+### Task 2
 
+[`04-install-ansible-pull.yaml`](ansible/playbooks/04-install-ansible-pull.yaml)
+
+- Use an ansible-pull command that uses the resources in the folder resources/ansible-pull/ of our GitHub repository located at https://github.com/puzzle/ansible-techlab. Apply the playbook local.yml located at the resource/ansible-pull folder and run it on all hosts in the inventory file hosts
+```bash
+ansible-pull --url https://github.com/puzzle/ansible-techlab -i resources/ansible-pull/hosts resources/ansible-pull/local.yml
+```
+- Show the content of /etc/motd and verify, that the file was copied using ansible-pull
+```bash
+cat /etc/motd
+```
+- Also verify, that no content of the git repository was copied to the local folder.
+```bash
+ls -l
+```
+
+### Task 3
+
+- Cron job
+```
+# /etc/cron.d/ansible-pull
+* * * * * vagrant ansible-pull -U https://github.com/puzzle/ansible-techlab -i resources/ansible-pull/hosts resources/ansible-pull/local.yml
+```
+- Command `watch` to show the content of `/etc/motd` every second
+```bash
+watch -n 1 cat /etc/motd
+```
+
+### Task 4
+
+[`04-revert_motd.yaml`](ansible/playbooks/04-revert_motd.yaml)
