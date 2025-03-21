@@ -1,0 +1,9 @@
+---
+- name: Create newdir directory
+  ansible.builtin.file:
+    path: /home/vagrant/newdir
+    state: directory
+    owner: vagrant
+    group: vagrant
+    mode: "0755"
+  notify: timestamp # create handler with 'timestamp' name

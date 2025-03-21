@@ -1,0 +1,5 @@
+---
+# tasks file for handlerrole
+- name: Timestamp to file
+  ansible.legacy.include_tasks: timestamp.yaml
+  tags: timestamp

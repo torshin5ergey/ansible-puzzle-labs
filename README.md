@@ -300,7 +300,8 @@ roles/apache2
 
 ### Task 4
 
-[`roles/base/`](ansible/roles/base/)
+- [`05-prod.yaml`](ansible/playbooks/05-prod.yaml)
+- [`roles/base/`](ansible/roles/base/)
 ```
 roles/base
 ├── defaults
@@ -326,7 +327,8 @@ roles/base
 
 ### Task 5
 
-[`roles/base/`](ansible/roles/base/)
+- [`05-prod.yaml`](ansible/playbooks/05-prod.yaml)
+- [`roles/base/`](ansible/roles/base/)
 ```
 roles/base
 ├── defaults
@@ -343,6 +345,36 @@ roles/base
 │   └── packages.yaml #
 ├── templates
 │   └── motd.j2 #
+├── tests
+│   ├── inventory
+│   └── test.yml
+└── vars
+    └── main.yml
+```
+
+## 5.1 Ansible Roles - Handlers and Blocks
+
+https://ansible.puzzle.ch/docs/05/01/
+
+### Tasks 1
+
+- [`05-myhandler.yaml`](ansible/playbooks/05-myhandler.yaml)
+- [`roles/handlerrole/`](ansible/roles/handlerrole/)
+```
+roles/handlerrole
+├── defaults
+│   └── main.yml
+├── files
+├── handlers
+│   └── main.yml #
+├── meta
+│   └── main.yml
+├── README.md
+├── tasks
+│   ├── main.yml #
+│   └── timestamp.yaml #
+├── templates
+│   └── readme.j2 #
 ├── tests
 │   ├── inventory
 │   └── test.yml

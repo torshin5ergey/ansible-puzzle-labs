@@ -1,0 +1,5 @@
+---
+- name: Handler example
+  hosts: ap-worker-node2
+  roles:
+    - handlerrole

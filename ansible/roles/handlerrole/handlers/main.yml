@@ -1,0 +1,10 @@
+---
+# handlers file for handlerrole
+- name: Timestamp to README.txt
+  ansible.builtin.template:
+    src: readme.j2
+    dest: /home/vagrant/newdir/README.txt
+    owner: vagrant
+    group: vagrant
+    mode: "0644"
+  listen: timestamp # handler wil be triggered only when newdir created, if newdir exists, handler wil not be executed
