@@ -326,3 +326,26 @@ roles/base
 
 ### Task 5
 
+[`roles/base/`](ansible/roles/base/)
+```
+roles/base
+├── defaults
+│   └── main.yml #
+├── files
+├── handlers
+│   └── main.yml
+├── meta
+│   └── main.yml #
+├── README.md
+├── tasks
+│   ├── main.yml #
+│   ├── motd.yaml #
+│   └── packages.yaml #
+├── templates
+│   └── motd.j2 #
+├── tests
+│   ├── inventory
+│   └── test.yml
+└── vars
+    └── main.yml
+```
