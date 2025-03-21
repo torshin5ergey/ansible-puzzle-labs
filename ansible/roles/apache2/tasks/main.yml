@@ -1,0 +1,24 @@
+---
+# tasks file for apache2
+- name: Install apache2, ufw
+  ansible.builtin.apt:
+    name:
+      - apache2
+      - ufw
+    state: present
+    update_cache: yes
+
+- name: Start and enable services
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+  loop:
+    - apache2
+    - ufw
+
+- name: Allow traffic for http and https
+  ansible.builtin.ufw:
+    rule: allow
+    port: "80,443"
+    proto: tcp

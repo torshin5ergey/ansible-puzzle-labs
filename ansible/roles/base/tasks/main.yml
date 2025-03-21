@@ -1,0 +1,8 @@
+---
+# tasks file for base
+- name: Set message of the day
+  ansible.builtin.include_tasks: motd.yaml
+  tags: motd
+- name: Install packages
+  ansible.builtin.include_tasks: packages.yaml
+  tags: packages

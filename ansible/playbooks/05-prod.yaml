@@ -1,0 +1,12 @@
+---
+- name: Base nodes setup
+  hosts: nodes
+  become: true
+  roles:
+    - base
+
+- name: Setup prod:)
+  hosts: web
+  become: true
+  roles:
+    - apache2

@@ -1,0 +1,11 @@
+---
+- name: Install packages
+  ansible.builtin.apt:
+    name:
+      - ufw
+      - apt-utils
+      - dos2unix
+      - emacs
+      - vim
+    state: present
+    update_cache: true

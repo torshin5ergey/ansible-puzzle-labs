@@ -1,0 +1,3 @@
+---
+# defaults file for base
+base_motd_content: "This is a server\n"

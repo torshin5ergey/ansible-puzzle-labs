@@ -262,3 +262,64 @@ time ansible ap-worker-node1 -B 10 -P 30 -a "sleep 1000"
 ### Tasks 2-3
 
 [`04-async.yaml`](ansible/playbooks/04-async.yaml)
+
+## 5. Ansible Roles - Basics
+
+https://ansible.puzzle.ch/docs/05/
+
+### Task 1
+
+[`ansible.cfg`](ansible/ansible.cfg)
+
+### Task 2
+
+[`roles/apache2/`](ansible/roles/apache2/)
+```
+roles/apache2
+├── defaults
+│   └── main.yml
+├── files
+├── handlers
+│   └── main.yml
+├── meta
+│   └── main.yml
+├── README.md
+├── tasks
+│   └── main.yml
+├── templates
+├── tests
+│   ├── inventory
+│   └── test.yml
+└── vars
+    └── main.yml
+```
+
+### Task 3
+
+[`05-webserver.yaml`](ansible/playbooks/05-webserver.yaml)
+
+### Task 4
+
+[`roles/base/`](ansible/roles/base/)
+```
+roles/base
+├── defaults
+│   └── main.yml
+├── files
+├── handlers
+│   └── main.yml
+├── meta
+│   └── main.yml
+├── README.md
+├── tasks
+│   ├── main.yml
+│   ├── motd.yaml
+│   └── packages.yaml
+├── templates
+│   └── motd.j2
+├── tests
+│   ├── inventory
+│   └── test.yml
+└── vars
+    └── main.yml
+```
