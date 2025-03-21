@@ -259,10 +259,6 @@ time ansible ap-worker-node1 -B 10 -a "sleep 1000"
 time ansible ap-worker-node1 -B 10 -P 30 -a "sleep 1000"
 ```
 
-### Task 2
-
-[`04-async.yaml`](ansible/playbooks/04-async.yaml)
-
-### Task 3
+### Tasks 2-3
 
 [`04-async.yaml`](ansible/playbooks/04-async.yaml)
