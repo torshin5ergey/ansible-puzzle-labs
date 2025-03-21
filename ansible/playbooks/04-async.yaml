@@ -1,0 +1,10 @@
+---
+- name: Async test
+  hosts: ap-worker-node1
+
+  tasks:
+    - name: Sleep for 1000 seconds
+      ansible.builtin.command: sleep 1000
+      register: my_output
+      changed_when: my_output.rc != 0
+      async: 10

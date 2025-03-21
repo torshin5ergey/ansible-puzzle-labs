@@ -237,3 +237,28 @@ watch -n 1 cat /etc/motd
 ### Task 4
 
 [`04-revert_motd.yaml`](ansible/playbooks/04-revert_motd.yaml)
+
+## 4.5 Task control
+
+https://ansible.puzzle.ch/docs/04/05/
+
+### Task 1
+
+- Write an ad-hoc command that sleeps for 1000 seconds and runs on `node1`. Ensure that the command times out after 10 seconds if not completed by then.
+```bash
+ansible ap-worker-node1 -B 10 -a "sleep 1000"
+```
+- Use the `time` command to see how long your ad-hoc command had to run. Use `man time` to see how `time` works.
+```bash
+# -B, --background run asynchronously, failing after N seconds
+time ansible ap-worker-node1 -B 10 -a "sleep 1000"
+```
+- Now add a polling interval of 30 seconds. Run the task, and ensure with the `time` command, that it had a longer runtime.
+```bash
+# -P, --poll poll interval for background tasks
+time ansible ap-worker-node1 -B 10 -P 30 -a "sleep 1000"
+```
+
+### Task 2
+
+[`04-async.yaml`](ansible/playbooks/04-async.yaml)
