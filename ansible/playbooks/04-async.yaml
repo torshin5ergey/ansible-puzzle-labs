@@ -3,8 +3,16 @@
   hosts: ap-worker-node1
 
   tasks:
-    - name: Sleep for 1000 seconds
-      ansible.builtin.command: sleep 1000
-      register: my_output
-      changed_when: my_output.rc != 0
-      async: 10
+    - name: Sleep
+      ansible.builtin.command: sleep 10
+      register: sleep
+      async: 30 # async task, must be finished in 30 seconds
+      poll: 0 # disable polling so Anisble is not blocking for next tasks
+
+    - name: Wait for asynchronous sleep job to end
+      ansible.builtin.async_status:
+        jid: "{{ sleep.ansible_job_id }}" # job id
+      register: job_result
+      until: job_result.finished
+      retries: 100
+      delay: 1
