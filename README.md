@@ -381,3 +381,26 @@ roles/handlerrole
 └── vars
     └── main.yml
 ```
+
+### Task 2
+
+- [`05-download.yaml`](ansible/playbooks/05-download.yaml)
+- [`roles/downloader/`](ansible/roles/downloader/)
+roles/downloader
+├── defaults
+│   └── main.yml
+├── files
+├── handlers
+│   └── main.yml
+├── meta
+│   └── main.yml
+├── README.md
+├── tasks
+│   ├── downloadfile.yaml #
+│   └── main.yml #
+├── templates
+├── tests
+│   ├── inventory
+│   └── test.yml
+└── vars
+    └── main.yml

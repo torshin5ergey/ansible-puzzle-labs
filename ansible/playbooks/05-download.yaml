@@ -1,0 +1,5 @@
+---
+- name: Run downloader
+  hosts: ap-worker-node2
+  roles:
+    - downloader

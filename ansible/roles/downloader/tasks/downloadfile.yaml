@@ -1,0 +1,20 @@
+---
+- block:
+    - name: Download file via url
+      ansible.builtin.get_url:
+        url: http://www.download.com/nonexistfile
+        dest: /home/vagrant/
+        owner: vagrant
+        group: vagrant
+        mode: "0644"
+    - name: Print complete message
+      ansible.builtin.debug:
+        msg: "Download completed"
+  rescue:
+    - name: Print error message
+      ansible.builtin.debug:
+        msg: "Download failed"
+
+- name: Playbok continues
+  ansible.builtin.debug:
+    msg: "Playbok continues"

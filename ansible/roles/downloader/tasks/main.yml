@@ -1,0 +1,5 @@
+---
+# tasks file for roles/downloader
+- name: Download file from url
+  ansible.builtin.include_tasks: downloadfile.yaml
+  tags: download
