@@ -404,3 +404,12 @@ roles/downloader
 │   └── test.yml
 └── vars
     └── main.yml
+
+## 6. Managing Secrets with Ansible Vault
+
+https://ansible.puzzle.ch/docs/06/
+
+### Task 1
+
+- [`06-secretservice.yaml`](ansible/playbooks/06-secretservice.yaml)
+- [`mi6.j2`](ansible/playbooks/mi6.j2)
