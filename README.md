@@ -417,3 +417,37 @@ https://ansible.puzzle.ch/docs/06/
 ```bash
 ansible nodes -a "cat /etc/MI6"
 ```
+
+### Task 2
+
+- [`06-secretservice.yaml`](ansible/playbooks/06-secretservice.yaml)
+- [`secret_vars.yaml`](ansible/playbooks/secret_vars.yaml)
+- [`mi6.j2`](ansible/playbooks/mi6.j2)
+
+### Task 3
+
+- Encrypt the `secret_vars.yaml` file by using `ansible-vault` with the password *goldfinger*.
+```bash
+ansible-vault encrypt playbooks/secret_vars.yaml
+# New Vault password:
+# Confirm New Vault password:
+```
+- Rerun the playbook providing the password for decrypting `secret_vars.yaml` at the command prompt.
+```bash
+ansible-playbook playbooks/06-secretservice.yaml --ask-vault-pass
+```
+- Rerun the playbook providing the password for decrypting `secret_vars.yaml` from the file `vaultpassword`.
+[`vaultpassword`](ansible/vaultpassword)
+```bash
+# decrypt
+ansible-vault decrypt playbooks/secret_vars.yaml
+
+# encrypt with vault id
+ansible-vault encrypt playbooks/secret_vars.yaml --vault-id vaultpassword
+# run with vault id
+ansible-playbook playbooks/06-secretservice.yaml --vault-id vaultpassword
+```
+
+### Task 4
+
+[`ansible.cfg`](ansible/ansible.cfg)
