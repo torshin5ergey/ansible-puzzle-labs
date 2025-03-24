@@ -575,3 +575,15 @@ ansible-galaxy collection build collections/puzzle/mycollection --output-path co
 ```bash
 ansible-galaxy collection build collections/puzzle/mycollection --output-path collections
 ```
+
+### Task 3
+
+- Install one of your newly built collections from the `tar.gz` file. See where it was installed.
+```bash
+ansible-galaxy collection install collections/puzzle-mycollection-1.0.0.tar.gz
+# ...
+# Installing 'puzzle.mycollection:1.0.0' to '/home/sergey/.ansible/collections/ansible_collections/puzzle/mycollection'
+# ...
+```
+- Change the ansible configuration so that the collection gets installed at `/home/ansible/techlab/collections`.
+[`ansible.cfg`](ansible/ansible.cfg) (`collections_paths`)

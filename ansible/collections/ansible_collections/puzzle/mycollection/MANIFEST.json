@@ -1,0 +1,30 @@
+{
+ "collection_info": {
+  "namespace": "puzzle",
+  "name": "mycollection",
+  "version": "1.0.0",
+  "authors": [
+   "your name <example@domain.com>"
+  ],
+  "readme": "README.md",
+  "tags": [],
+  "description": "your collection description",
+  "license": [
+   "GPL-2.0-or-later"
+  ],
+  "license_file": null,
+  "dependencies": {},
+  "repository": "http://example.com/repository",
+  "documentation": "http://docs.example.com",
+  "homepage": "http://example.com",
+  "issues": "http://example.com/issue/tracker"
+ },
+ "file_manifest_file": {
+  "name": "FILES.json",
+  "ftype": "file",
+  "chksum_type": "sha256",
+  "chksum_sha256": "4cb4d74fc7edb4e6df97f38fbc3faf096c3dd6710d9ca6711bbf54cec816e4a8",
+  "format": 1
+ },
+ "format": 1
+}
