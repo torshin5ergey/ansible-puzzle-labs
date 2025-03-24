@@ -469,3 +469,12 @@ ansible-vault encrypt_string miss_moneypenny -n var_password
 ansible-playbook playbooks/06-secretservice.yaml
 ```
 [`secret_vars.yaml`](ansible/playbooks/secret_vars.yaml)
+
+### Task 6
+
+- Remove the `/etc/MI6` file on the nodes using an ad hoc command.
+```bash
+ansible nodes -b -a "rm /etc/MI6"
+# or
+ansible nodes -b -m file -a "path=/etc/MI6 state=absent"
+```
