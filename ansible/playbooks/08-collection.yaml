@@ -1,0 +1,30 @@
+---
+- name: Setup and test Podman
+  hosts: controller
+  # collections:
+  #   - containers.podman
+  become: true
+  vars:
+    var_image: docker.io/library/nginx
+
+  tasks:
+    - name: Install podman
+      ansible.builtin.apt:
+        name: podman
+        state: present
+        update_cache: true
+
+    - name: Pull podman image nginx
+      # https://docs.ansible.com/ansible/2.9/modules/podman_image_module.html#podman-image-module
+      containers.podman.podman_image:
+        name: "{{ var_image }}"
+        state: present
+        pull: true
+
+    - name: Start Podman container
+      containers.podman.podman_container:
+        name: nginx_container
+        image: "{{ var_image }}"
+        state: started
+        publish:
+          - "8080"

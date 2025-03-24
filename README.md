@@ -613,3 +613,21 @@ ansible-galaxy collection install nginxinc.nginx_controller
 ```bash
 ansible-galaxy collection install --requirements-file collections/08-requirements.yaml
 ```
+
+### Task 6
+
+- Install the collection podman from namespace containers using any of the methods you know.
+```bash
+ansible-galaxy collection install containers.podman --force
+```
+- Write a playbook `collection.yml`
+[`08-collection.yaml`](ansible/playbooks/08-collection.yaml)
+```bash
+ansible-playbook playbooks/08-collection.yaml --ask-become-pass
+
+sudo podman ps
+```
+- Remove podman with an ad-hoc command to not interfere with the next labs.
+```bash
+ansible controller -b -m apt -a "name=podman state=absent purge=true autoremove=true" --ask-become-pass
+```
