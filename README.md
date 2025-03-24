@@ -528,3 +528,25 @@ ansible-galaxy install nginxinc.nginx
 ```bash
 ansible controller -m archive -a "path=$HOME/ansible-puzzle-labs/ansible/roles/nginxinc.nginx dest=$HOME/ansible-puzzle-labs/ansible/nginx.tar.gz"
 ```
+
+### Task 2
+
+- Remove the nginx role using `ansible-galaxy`.
+```bash
+ansible-galaxy remove nginxinc.nginx
+```
+- [`07-requirements.yaml`](ansible/roles/07-requirements.yaml)
+- Install the role by using an appropriate `ansible-galaxy` command and the `requirements.yml` file.
+```bash
+ansible-galaxy install -r roles/07-requirements.yaml
+```
+- Remove the role mynginx using `ansible-galaxy`.
+```bash
+ansible-galaxy remove mynginx
+```
+- Remove the file `nginx.tar.gz` and `roles/requirements.yml` by using an ad hoc command for each.
+```bash
+ansible controller -m file -a "path=$HOME/ansible-puzzle-labs/ansible/nginx.tar.gz state=absent"
+
+ansible controller -m file -a "path=$HOME/ansible-puzzle-labs/ansible/roles/07-requirements.yaml state=absent"
+```

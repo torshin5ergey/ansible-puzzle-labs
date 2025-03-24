@@ -1,0 +1,3 @@
+---
+- src: nginx.tar.gz
+  name: mynginx
