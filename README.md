@@ -586,4 +586,18 @@ ansible-galaxy collection install collections/puzzle-mycollection-1.0.0.tar.gz
 # ...
 ```
 - Change the ansible configuration so that the collection gets installed at `/home/ansible/techlab/collections`.
-[`ansible.cfg`](ansible/ansible.cfg) (`collections_paths`)
+[`ansible.cfg`](ansible/ansible.cfg) `collections_paths`
+
+### Task 4
+
+- Use `ansible-config dump` to see what default galaxy server is configured
+```bash
+ansible-config dump
+# ...
+# GALAXY_SERVER_LIST(default) = None
+# ...
+```
+- Add another galaxy server to your `GALAXY_SERVER_LIST`. This entry can point to a nonexistent galaxy server.
+[`ansible.cfg`](ansible/ansible.cfg) `server_list`
+- Set it explicitly to galaxy.ansible.com in the `ansible.cfg` file, even though this is the default value.
+[`ansible.cfg`](ansible/ansible.cfg) `[galaxy_server.mygalaxyserver]`
