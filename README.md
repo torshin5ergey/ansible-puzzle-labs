@@ -562,3 +562,16 @@ https://ansible.puzzle.ch/docs/08/
 ansible-galaxy collection init --init-path collections puzzle.mycollection
 ```
 [`/collections/puzzle/mycollection/`](ansible/collections/puzzle/mycollection/)
+
+### Task 2
+
+- Build a collection from your newly initialized collection-skeleton. Have a close look at the name that was set.
+```bash
+ansible-galaxy collection build collections/puzzle/mycollection --output-path collections
+```
+- Change the namespace and collection name in the file `galaxy.yml` in the skeleton.
+[`galaxy.yml`](ansible/collections/puzzle/mycollection/galaxy.yml)
+- Rebuild the collection and see the new name.
+```bash
+ansible-galaxy collection build collections/puzzle/mycollection --output-path collections
+```
