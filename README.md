@@ -601,3 +601,15 @@ ansible-config dump
 [`ansible.cfg`](ansible/ansible.cfg) `server_list`
 - Set it explicitly to galaxy.ansible.com in the `ansible.cfg` file, even though this is the default value.
 [`ansible.cfg`](ansible/ansible.cfg) `[galaxy_server.mygalaxyserver]`
+
+### Task 5
+
+- Install the collection `nginxinc.nginx_controller` using the `ansible-galaxy` command.
+```bash
+ansible-galaxy collection install nginxinc.nginx_controller
+```
+- Write a requirements file `requirements.yml` that ensures the collection `cloud` from `cloudscale_ch` is installed. Install the collection by using this requirements file.
+[`08-requirements.yaml`](ansible/collections/08-requirements.yaml)
+```bash
+ansible-galaxy collection install --requirements-file collections/08-requirements.yaml
+```
