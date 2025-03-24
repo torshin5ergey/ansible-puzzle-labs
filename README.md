@@ -627,6 +627,9 @@ ansible-playbook playbooks/08-collection.yaml --ask-become-pass
 
 sudo podman ps
 ```
+
+### Task 7
+
 - Remove podman with an ad-hoc command to not interfere with the next labs.
 ```bash
 ansible controller -b -m apt -a "name=podman state=absent purge=true autoremove=true" --ask-become-pass
