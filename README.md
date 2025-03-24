@@ -478,3 +478,33 @@ ansible nodes -b -a "rm /etc/MI6"
 # or
 ansible nodes -b -m file -a "path=/etc/MI6 state=absent"
 ```
+
+### Task 7
+
+- Encrypt another file `secret_vars2.yaml`. Ensure it is encrypted with your vault password file `vaultpassword`
+```bash
+ansible-vault encrypt playbooks/secret_vars2.yaml
+```
+[`secret_vars2.yaml`](ansible/playbooks/secret_vars2.yaml)
+- Change the encryption of the file: encrypt it with another password provided at the command line.
+```bash
+ansible-vault rekey playbooks/secret_vars2.yaml --new-vault-id @prompt
+# New vault password (default): test
+# Confirm new vault password (default): test
+# Rekey successful
+
+# Test
+ansible-vault decrypt playbooks/secret_vars2.yaml --output - --vault-id @prompt
+# or
+ansible-vault view playbooks/secret_vars2.yaml --vault-id @prompt
+
+# Vault password (default): test
+# ---
+# var_username: jamesbond
+# var_password: miss_moneypenny
+```
+
+### Task 8
+
+- Avoid to print out sensitive data at runtime with `no_log: true`
+[`06-secretservice.yaml`](ansible/playbooks/06-secretservice.yaml)
