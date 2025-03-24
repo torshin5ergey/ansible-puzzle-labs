@@ -550,3 +550,15 @@ ansible controller -m file -a "path=$HOME/ansible-puzzle-labs/ansible/nginx.tar.
 
 ansible controller -m file -a "path=$HOME/ansible-puzzle-labs/ansible/roles/07-requirements.yaml state=absent"
 ```
+
+## 8. Ansible Collections
+
+https://ansible.puzzle.ch/docs/08/
+
+### Task 1
+
+- Create a collection with the `ansible-galaxy collection` command. Choose a namespace and a collection name of your liking.
+```bash
+ansible-galaxy collection init --init-path collections puzzle.mycollection
+```
+[`/collections/puzzle/mycollection/`](ansible/collections/puzzle/mycollection/)
