@@ -508,3 +508,23 @@ ansible-vault view playbooks/secret_vars2.yaml --vault-id @prompt
 
 - Avoid to print out sensitive data at runtime with `no_log: true`
 [`06-secretservice.yaml`](ansible/playbooks/06-secretservice.yaml)
+
+## 7. Ansible Galaxy and more
+
+https://ansible.puzzle.ch/docs/07/
+
+### Task 1
+
+- Search the Ansible Galaxy for a nginx role.
+https://galaxy.ansible.com/ui/
+```bash
+ansible-galaxy search nginx | grep nginxinc
+```
+- Install such a nginx role using `ansible-galaxy`.
+```bash
+ansible-galaxy install nginxinc.nginx
+```
+- Create a tar.gz file nginx.tar.gz with the content of the role using an Ansible ad hoc command.
+```bash
+ansible controller -m archive -a "path=$HOME/ansible-puzzle-labs/ansible/roles/nginxinc.nginx dest=$HOME/ansible-puzzle-labs/ansible/nginx.tar.gz"
+```
