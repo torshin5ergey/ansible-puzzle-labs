@@ -451,3 +451,21 @@ ansible-playbook playbooks/06-secretservice.yaml --vault-id vaultpassword
 ### Task 4
 
 [`ansible.cfg`](ansible/ansible.cfg)
+
+### Task 5
+
+- Decrypt the file `secret_vars.yaml`.
+```bash
+ansible-vault decrypt playbooks/secret_vars.yaml
+# Decryption successful
+```
+- Encrypt the values of the variables `username` and `password` and put them into the `secret_vars.yaml` file.
+```bash
+ansible-vault encrypt_string jamesbond -n var_username
+# Encryption successful
+ansible-vault encrypt_string miss_moneypenny -n var_password
+# Encryption successful
+
+ansible-playbook playbooks/06-secretservice.yaml
+```
+[`secret_vars.yaml`](ansible/playbooks/secret_vars.yaml)
