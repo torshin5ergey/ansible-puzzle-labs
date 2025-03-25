@@ -724,4 +724,31 @@ ansible-navigator run playbooks/10-site.yaml
 ansible-navigator run playbooks/10-site.yaml -m interactive
 ```
 
+### Task 6
+
+- Use `ansible-navigator` to see the documentation of the `file` module.
+```bash
+ansible-navigator
+:doc file
+# Or
+ansible-navigator doc file
+```
+- Use `ansible-navigator` to see the documentation of the `dig` lookup plugin.
+```bash
+ansible-navigator
+:doc dig -t lookup
+# Or
+ansible-navigator doc dig -t lookup
+```
+
+### Task 7
+
+- Use `ansible-navigator` to see the current inventory.
+```bash
+ansible-navigator
+:inventory
+# Or
+ansible-navigator inventory
+```
+
 ## 11. Event Driven Ansible
