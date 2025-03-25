@@ -6,10 +6,12 @@ ansible-navigator:
     volume-mounts:
       - dest: /runner/ansible-puzzle-labs/.ssh # for ssh key
         src: $HOME/ansible-puzzle-labs/.ssh
+      - dest: /home/ansible/ansible-puzzle-labs/ansible/ansible.cfg # for cfg
+        src: $HOME/ansible-puzzle-labs/ansible/ansible.cfg
 
   ansible:
     config:
-      path: $HOME/ansible-puzzle-labs/ansible/ansible.cfg
+      path: /home/ansible/ansible-puzzle-labs/ansible/ansible.cfg
     cmdline: "--forks 20"
 
   color:

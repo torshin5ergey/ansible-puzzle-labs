@@ -751,4 +751,31 @@ ansible-navigator
 ansible-navigator inventory
 ```
 
+### Task 8
+
+- Use `ansible-navigator` to see the current ansible configuration.
+```bash
+ansible-navigator
+:config
+# Or
+ansible-navigator config
+```
+
+### Task 9
+
+- Replay the run by using `ansible-navigator` with the corresponding option.
+```bash
+ansible-navigator replay artifacts/10-site-artifact...
+```
+
+### Task 10
+
+- Use `ansible-navigator` to show all available collections.
+```bash
+ansible-navigator
+:collections
+# Or
+ansible-navigator collections
+```
+
 ## 11. Event Driven Ansible
