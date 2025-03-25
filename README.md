@@ -634,3 +634,51 @@ sudo podman ps
 ```bash
 ansible controller -b -m apt -a "name=podman state=absent purge=true autoremove=true" --ask-become-pass
 ```
+
+## 9.1 AWX / Ascender / AAP / Installation
+
+https://ansible.puzzle.ch/docs/09/01/
+
+### Task 1
+
+- Ascender https://github.com/ctrliq/ascender-install:
+  - install with `ascender-install` script
+  - available without subscription
+- AAP (Ansible Automation Platform) https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/:
+  - install with RPM
+  - only available when you have valid subscription
+
+### Tasks 2-3
+
+https://ansible-community.github.io/awx-operator-helm/
+
+```bash
+helm repo add awx-operator https://ansible-community.github.io/awx-operator-helm/
+
+kubectl apply -f awx/00-namespace.yaml
+
+helm install awx-operator awx-operator/awx-operator -n awx
+
+mkdir /mnt/awx-storage
+chown -R 26:26 /mnt/awx-storage
+chmod -R 750 /mnt/awx-storage
+
+kubectl apply -f awx/
+kubectl get pods -n awx
+```
+
+### Task 4
+
+```bash
+kubectl get svc ansible-awx-service -n awx
+
+# <minikube ip>:<nodeport>
+
+# username admin
+# password
+kubectl get secret ansible-awx-admin-password -o jsonpath="{.data.password}" -n awx | base64 --decode ; echo
+```
+
+## 10. Ansible-Navigator
+
+## 11. Event Driven Ansible
