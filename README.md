@@ -691,4 +691,10 @@ https://ansible.readthedocs.io/projects/navigator/installation/#install-ansible-
 ansible-navigator
 ```
 
+### Task 2
+
+- [`ansible.cfg`](ansible/ansible.cfg)
+https://ansible.readthedocs.io/projects/navigator/settings/#the-ansible-navigator-settings-file
+- [`ansible-navigator.yaml`](ansible/ansible-navigator/ansible-navigator.yaml)
+
 ## 11. Event Driven Ansible

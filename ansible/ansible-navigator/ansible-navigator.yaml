@@ -1,0 +1,22 @@
+---
+ansible-navigator:
+  execution-environment:
+    enabled: True
+    container-engine: docker
+
+  ansible:
+    config:
+      path: $HOME/ansible-puzzle-labs/ansible/ansible.cfg
+    cmdline: "--forks 20"
+
+  color:
+    enable: True
+
+  logging:
+    level: info
+    append: True
+    file: logs/log.txt
+
+  playbook-artifact:
+    enable: True
+    save-as: artifacts/{playbook_name}-artifact-{time_stamp}.json
