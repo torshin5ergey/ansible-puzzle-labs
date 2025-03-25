@@ -715,4 +715,13 @@ ansible-navigator run playbooks/10-site.yaml
 watch docker ps
 ```
 
+### Task 5
+
+- After a successful run of your playbook, we play around with the TUI. Be sure to not let ansible-navigator run in interactive mode and not stdout mode (-m stdout). Since interactive is the default, you shouldn’t have any problems with that.
+```bash
+ansible-navigator run playbooks/10-site.yaml
+# Or
+ansible-navigator run playbooks/10-site.yaml -m interactive
+```
+
 ## 11. Event Driven Ansible
