@@ -19,3 +19,4 @@ ansible/collections/ansible_collections/
 ansible-navigator.log
 ansible/logs/
 ansible/artifacts/
+ansible/context/
