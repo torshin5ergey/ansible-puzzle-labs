@@ -1,0 +1,19 @@
+---
+- name: Setup mariadb
+  hosts: db
+  vars:
+    var_image: docker.io/bitnami/mariadb
+  become: true
+
+  tasks:
+    - name: Install podman
+      ansible.builtin.apt:
+        name: podman
+        state: present
+        update_cache: true
+
+    - name: Pull mariadb image
+      containers.podman.podman_image:
+        name: "{{ var_image }}"
+        state: present
+        pull: true

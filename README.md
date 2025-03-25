@@ -777,5 +777,22 @@ ansible-navigator
 # Or
 ansible-navigator collections
 ```
+## 10.1 Ansible-Builder
+
+https://ansible.puzzle.ch/docs/10/01/
+
+### Task 1
+
+```bash
+ansible-builder -h
+```
+
+### Task 2
+
+- Create a playbook `container.yml` that installs `podman` and pulls the image `docker.io/bitnami/mariadb` on all `db` servers.
+[`10-continer.yaml`](ansible/playbooks/10-container.yaml)
+```bash
+ansible-navigator run playbooks/10-container.yaml
+```
 
 ## 11. Event Driven Ansible
