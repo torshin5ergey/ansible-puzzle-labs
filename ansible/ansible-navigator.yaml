@@ -3,6 +3,9 @@ ansible-navigator:
   execution-environment:
     enabled: True
     container-engine: docker
+    volume-mounts:
+      - dest: /runner/ansible-puzzle-labs/.ssh # for ssh key
+        src: $HOME/ansible-puzzle-labs/.ssh
 
   ansible:
     config:

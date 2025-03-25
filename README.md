@@ -697,4 +697,22 @@ ansible-navigator
 https://ansible.readthedocs.io/projects/navigator/settings/#the-ansible-navigator-settings-file
 - [`ansible-navigator.yaml`](ansible/ansible-navigator.yaml)
 
+### Task 3
+
+[`10-site.yaml`](ansible/playbooks/10-site.yaml)
+
+### Task 4
+
+- Run the playbook `site.yml` by using ansible-navigator and the configuration from Task 2.
+```bash
+ansible-navigator
+:run playbooks/10-site.yaml
+# Or
+ansible-navigator run playbooks/10-site.yaml
+```
+- While running the playbook, check in another terminal window if the container gets startet and stopped. You can do this by issuing `watch podman container list`.
+```bash
+watch docker ps
+```
+
 ## 11. Event Driven Ansible
