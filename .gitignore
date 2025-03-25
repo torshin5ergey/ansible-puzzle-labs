@@ -16,3 +16,5 @@ mail_data.yaml
 ansible/roles/nginxinc.nginx
 
 ansible/collections/ansible_collections
+
+ansible/ansible-navigator.log
