@@ -681,4 +681,14 @@ kubectl get secret ansible-awx-admin-password -o jsonpath="{.data.password}" -n 
 
 ## 10. Ansible-Navigator
 
+https://ansible.puzzle.ch/docs/10/
+
+### Task 1
+
+https://ansible.readthedocs.io/projects/navigator/installation/#install-ansible-navigator-windows
+```bash
+# Ready to run
+ansible-navigator
+```
+
 ## 11. Event Driven Ansible
