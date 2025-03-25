@@ -685,7 +685,7 @@ https://ansible.puzzle.ch/docs/10/
 
 ### Task 1
 
-https://ansible.readthedocs.io/projects/navigator/installation/#install-ansible-navigator-windows
+https://ansible.readthedocs.io/projects/navigator/installation/
 ```bash
 # Ready to run
 ansible-navigator

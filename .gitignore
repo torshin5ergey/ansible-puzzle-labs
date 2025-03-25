@@ -8,13 +8,14 @@ terraform/*.tfstate.backup
 terraform/.terraform.lock.hcl
 terraform/virtualbox.box
 
+.ssh
+
 # ansible.puzzle tasks
 *.zip
 *.tar.gz
 mail_data.yaml
-
 ansible/roles/nginxinc.nginx
-
-ansible/collections/ansible_collections
-
+ansible/collections/ansible_collections/
+ansible-navigator.log
 ansible/logs/
+ansible/artifacts/
