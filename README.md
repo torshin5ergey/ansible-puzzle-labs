@@ -791,6 +791,7 @@ ansible-builder -h
 
 - Create a playbook `container.yml` that installs `podman` and pulls the image `docker.io/bitnami/mariadb` on all `db` servers.
 [`10-continer.yaml`](ansible/playbooks/10-container.yaml)
+- Run this playbook and observe how it fails because the collection `containers.podman` is not available in the demo EE `ansible-navigator-demo-ee`.
 ```bash
 ansible-navigator run playbooks/10-container.yaml
 ```
