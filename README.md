@@ -796,4 +796,10 @@ ansible-builder -h
 ansible-navigator run playbooks/10-container.yaml
 ```
 
+### Task 3
+
+- [`10-default-ee.yaml`](ansible/10-default-ee.yaml)
+- [`10-requirements.yaml`](ansible/10-requirements.yaml)
+- [`10-requirements.txt`](ansible/10-requirements.txt)
+
 ## 11. Event Driven Ansible
