@@ -796,7 +796,7 @@ ansible-builder -h
 ansible-navigator run playbooks/10-container.yaml
 ```
 
-### Task 3
+### Tasks 3-4
 
 - [`10-default-ee.yaml`](ansible/10-default-ee.yaml)
 - [`10-requirements.yaml`](ansible/10-requirements.yaml)
