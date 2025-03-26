@@ -11,6 +11,12 @@
   rules:
     - name: Check webservers status and rebuild
       condition: event.url_check.status == "down"
+      throttle: # ограничение частоты срабатывания
+        once_within: 5 minutes # не чаще одного раза в 5 минут
+        group_by_attributes:
+          - ansible_eda.event.meta.source.type # группировка срабатываний по типу источника
       action:
-        debug:
-          var: event
+        # debug:
+        #   var: event
+        run_playbook:
+          name: playbooks/11-sos.yaml

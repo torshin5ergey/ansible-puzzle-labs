@@ -1,0 +1,20 @@
+---
+  # Create an unattended sos report labeled with the fully qualified collection name of the source plugin used
+- name: S.O.S.
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Install package sos
+      ansible.builtin.apt:
+        name: sosreport
+        state: present
+        update_cache: true
+
+    - name: Create a sos report
+      # --clean очистка временных файлов отчета
+      # --batch автоматически, без интерактива
+      # --label добавление метки с именем источнка
+      ansible.builtin.command: "sosreport --clean --batch --label {{ ansible_eda.event.meta.source.type }}"
+      register: my_output
+      changed_when: my_output.rc != 0

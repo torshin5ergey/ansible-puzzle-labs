@@ -946,3 +946,13 @@ ansible-rulebook --rulebook 11-debug_event_rulebook.yaml -i inventory/hosts --ve
 event: {'url_check': {'url': 'http://192.168.0.26', 'status': 'down', 'error_msg': "Cannot connect to host 192.168.0.26:80 ssl:default [Connect call failed ('192.168.0.26', 80)]"}, 'meta': {'source': {'name': 'Check webserver', 'type': 'ansible.eda.url_check'}, 'received_at': '2025-03-26T19:01:37.243178Z', 'uuid': 'b7fa6fe6-8e69-4fb8-8cd8-1fc9b7e7083c'}}
 ...
 ```
+
+### Task 2
+
+- [`11-debug_event_rulebook.yaml`](ansible/11-debug_event_rulebook.yaml)
+- [`11-sos.yaml`](ansible/playbooks/11-sos.yaml)
+- Run with
+```bash
+ansible-rulebook --rulebook 11-debug_event_rulebook.yaml -i inventory/hosts --verbose
+```
+- sosreports will be at `/tmp/` on node
