@@ -125,7 +125,7 @@ echo "[defaults]\ninventory = /home/ansible/techlab/inventory/hosts" > ansible.c
 
 [`04-tempfolder.yaml`](ansible/playbooks/04-tempfolder.yaml)
 
-## 4.1 Ansible Playbooks - Variables and Loops
+## 4.1. Ansible Playbooks - Variables and Loops
 
 https://ansible.puzzle.ch/docs/04/01/
 
@@ -150,7 +150,7 @@ ansible-playbook playbooks/04-motd.yaml -l ap-worker-node1,ap-worker-node2
 
 [`04-takemehome.yaml`](ansible/playbooks/04-takemehome.yaml)
 
-## 4.2 Ansible Playbooks - Templates
+## 4.2. Ansible Playbooks - Templates
 
 https://ansible.puzzle.ch/docs/04/02/
 
@@ -169,7 +169,7 @@ https://ansible.puzzle.ch/docs/04/02/
 - [`04-serverinfo.yaml`](ansible/playbooks/04-serverinfo.yaml)
 - [`serverinfo.j2`](ansible/playbooks/serverinfo.j2)
 
-## 4.3 Ansible Playbooks - Output
+## 4.3. Ansible Playbooks - Output
 
 https://ansible.puzzle.ch/docs/04/03/
 
@@ -238,7 +238,7 @@ watch -n 1 cat /etc/motd
 
 [`04-revert_motd.yaml`](ansible/playbooks/04-revert_motd.yaml)
 
-## 4.5 Task control
+## 4.5. Task control
 
 https://ansible.puzzle.ch/docs/04/05/
 
@@ -352,7 +352,7 @@ roles/base
     └── main.yml
 ```
 
-## 5.1 Ansible Roles - Handlers and Blocks
+## 5.1. Ansible Roles - Handlers and Blocks
 
 https://ansible.puzzle.ch/docs/05/01/
 
@@ -635,7 +635,7 @@ sudo podman ps
 ansible controller -b -m apt -a "name=podman state=absent purge=true autoremove=true" --ask-become-pass
 ```
 
-## 9.1 AWX / Ascender / AAP / Installation
+## 9.1. AWX / Ascender / AAP / Installation
 
 https://ansible.puzzle.ch/docs/09/01/
 
@@ -777,7 +777,7 @@ ansible-navigator
 # Or
 ansible-navigator collections
 ```
-## 10.1 Ansible-Builder
+## 10.1. Ansible-Builder
 
 https://ansible.puzzle.ch/docs/10/01/
 
@@ -812,7 +812,7 @@ ansible-navigator images
 - [`ansible-navigator.yaml`](ansible/ansible-navigator.yaml)
 - [`10-container.yaml`](ansible/playbooks/10-container.yaml)
 
-## 10.2 Ansible Runner
+## 10.2. Ansible Runner
 
 https://ansible.puzzle.ch/docs/10/02/
 
@@ -862,7 +862,7 @@ artifacts/
     └── 10-site.yaml
 ```
 
-## 11.1 Event Driven Ansible - Basics
+## 11.1. Event Driven Ansible - Basics
 
 https://ansible.puzzle.ch/docs/11/01/
 
@@ -930,7 +930,7 @@ Check with
 curl -H 'Content-Type: application/json' -d "{\"message\": \"webservers down\"}" 127.0.0.1:5000/endpoint
 ```
 
-## 11.2 Event Driven Ansible - Events and Facts
+## 11.2. Event Driven Ansible - Events and Facts
 
 https://ansible.puzzle.ch/docs/11/02/
 
