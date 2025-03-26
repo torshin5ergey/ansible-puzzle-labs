@@ -14,7 +14,7 @@
         state: present
         update_cache: true
 
-    # Start and enable apache2
+    # Start and enable apache2 and ufw
     - name: Start and enable services
       ansible.builtin.systemd:
         name: "{{ item }}"
@@ -24,6 +24,14 @@
       loop:
         - apache2
         - ufw
+
+    - name: Set webpage
+      ansible.builtin.copy:
+        content: "Ansible Puzzle Labs solutions by @torshin5ergey"
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: "0644"
 
     # Open 80 port on ufw firewall
     - name: Ensure port 80 is open on the ufw

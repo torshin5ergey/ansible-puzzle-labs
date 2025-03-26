@@ -862,4 +862,20 @@ artifacts/
     └── 10-site.yaml
 ```
 
-## 11. Event Driven Ansible
+## 11.1 Event Driven Ansible - Basics
+
+https://ansible.puzzle.ch/docs/11/01/
+
+### Task 1
+
+https://ansible.readthedocs.io/projects/rulebook/en/latest/rulebooks.html
+```bash
+python3 -m pip install ansible-rulebook
+
+ansible-rulebook -h
+```
+
+### Task 2
+
+- [`04-webserver.yaml`](ansible/playbooks/04-webserver.yaml)
+- 
