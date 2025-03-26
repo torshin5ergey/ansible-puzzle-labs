@@ -20,3 +20,4 @@ ansible-navigator.log
 ansible/logs/
 ansible/artifacts/
 ansible/context/
+ssh_key

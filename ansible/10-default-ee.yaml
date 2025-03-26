@@ -19,12 +19,15 @@ images:
 additional_build_files:
   - src: ansible.cfg
     dest: configs
+  - src: ../.ssh/id_rsa
+    dest: ssh
 
 additional_build_steps:
   prepend_base:
     - RUN echo This is a prepend base command!
     - RUN $PKGMGR update -y && $PKGMGR install python3.11 openssh-clients -y
     - RUN ln -sf /usr/bin/python3.11 /usr/bin/python3
+    - COPY _build/ssh/id_rsa /runner/ansible-puzzle-labs/.ssh/id_rsa
   prepend_galaxy:
     - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
   prepend_final: |

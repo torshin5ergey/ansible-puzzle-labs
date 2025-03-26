@@ -849,4 +849,17 @@ https://ansible.readthedocs.io/projects/runner/en/stable/intro/#runner-artifacts
 artifacts/
 ```
 
+### Task 4
+
+```
+.
+├── env
+│   ├── settings
+│   └── ssh_key
+├── inventory
+│   └── hosts
+└── project
+    └── 10-site.yaml
+```
+
 ## 11. Event Driven Ansible

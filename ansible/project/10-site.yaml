@@ -2,6 +2,7 @@
 - name: Run tasks on webservers
   hosts: web
   become: true
+  remote_user: vagrant
 
   tasks:
     - name: Install apache2 and ufw
@@ -36,6 +37,7 @@
   become: true
   vars:
     motd_content: "This is a database server\n"
+  remote_user: vagrant
 
   tasks:
     - name: Set content of /etc/motd
