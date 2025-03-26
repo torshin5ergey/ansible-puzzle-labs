@@ -807,4 +807,15 @@ ansible-navigator run playbooks/10-container.yaml
 - [`ansible-navigator.yaml`](ansible/ansible-navigator.yaml)
 - [`10-container.yaml`](ansible/playbooks/10-container.yaml)
 
+## 10.2 Ansible Runner
+
+https://ansible.puzzle.ch/docs/10/02/
+
+### Task 1
+
+```bash
+ansible-runner --version
+ansible-runner --help
+```
+
 ## 11. Event Driven Ansible
