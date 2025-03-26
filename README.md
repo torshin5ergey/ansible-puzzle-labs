@@ -929,3 +929,20 @@ Check with
 ```bash
 curl -H 'Content-Type: application/json' -d "{\"message\": \"webservers down\"}" 127.0.0.1:5000/endpoint
 ```
+
+## 11.2 Event Driven Ansible - Events and Facts
+
+https://ansible.puzzle.ch/docs/11/02/
+
+### Task 1
+
+[`11-debug_event_rulebook.yaml`](ansible/11-debug_event_rulebook.yaml)
+Run with
+```bash
+ansible-rulebook --rulebook 11-debug_event_rulebook.yaml -i inventory/hosts --verbose
+# output
+...
+** 2025-03-26 22:01:37.247327 [debug] ********************************************
+event: {'url_check': {'url': 'http://192.168.0.26', 'status': 'down', 'error_msg': "Cannot connect to host 192.168.0.26:80 ssl:default [Connect call failed ('192.168.0.26', 80)]"}, 'meta': {'source': {'name': 'Check webserver', 'type': 'ansible.eda.url_check'}, 'received_at': '2025-03-26T19:01:37.243178Z', 'uuid': 'b7fa6fe6-8e69-4fb8-8cd8-1fc9b7e7083c'}}
+...
+```
