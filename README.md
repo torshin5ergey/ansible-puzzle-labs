@@ -878,4 +878,22 @@ ansible-rulebook -h
 ### Task 2
 
 - [`04-webserver.yaml`](ansible/playbooks/04-webserver.yaml)
-- 
+```bash
+
+```
+
+### Task 3
+
+- Write a rulebook `webserver_rulebook.yml`.
+[`11-webserver-rulebook.yaml`](ansible/11-webserver-rulebook.yaml)
+- Install `ansible.eda` collection.
+```bash
+ansible-galaxy collection install ansible.eda
+```
+
+### Task 4
+
+- Start `webserver_rulebook.yml` in verbose mode.
+```bash
+ansible-rulebook --rulebook 11-webserver-rulebook.yaml -i inventory/hosts --verbose
+```
