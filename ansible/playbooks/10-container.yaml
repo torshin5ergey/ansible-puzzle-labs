@@ -1,16 +1,26 @@
 ---
-- name: Setup mariadb
+- name: Setup mariadb in Podman
   hosts: db
   vars:
     var_image: docker.io/bitnami/mariadb
   become: true
 
   tasks:
+    - name: Add Podman repo # For Ubuntu focal 20.04
+      ansible.builtin.get_url:
+        url: "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04/Release.key"
+        dest: /tmp/podman-key.gpg
+        mode: '0644'
+
+    - name: Convert and install GPG key
+      ansible.builtin.command: gpg --dearmor --output /usr/share/keyrings/libcontainers-stable.gpg /tmp/podman-key.gpg
+      args:
+        creates: /usr/share/keyrings/libcontainers-stable.gpg
+
     - name: Install podman
       ansible.builtin.apt:
         name: podman
         state: present
-        update_cache: true
 
     - name: Pull mariadb image
       containers.podman.podman_image:

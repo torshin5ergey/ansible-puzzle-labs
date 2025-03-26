@@ -3,6 +3,9 @@ ansible-navigator:
   execution-environment:
     enabled: True
     container-engine: docker
+    image: docker.io/library/default-ee
+    pull:
+      policy: never
     volume-mounts:
       - dest: /runner/ansible-puzzle-labs/.ssh # for ssh key
         src: $HOME/ansible-puzzle-labs/.ssh
@@ -19,7 +22,7 @@ ansible-navigator:
 
   logging:
     level: info
-    append: True
+    append: False
     file: logs/log.txt
 
   playbook-artifact:
