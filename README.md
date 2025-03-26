@@ -902,3 +902,30 @@ ansible-rulebook --rulebook 11-webserver_rulebook.yaml -i inventory/hosts --verb
 
 - Write the rulebook `webhook_rulebook.yml` that opens a webhook on port 5000 of the control node `control0`.
 [`11-webhook_rulebook.yaml`](ansible/11-webhook_rulebook.yaml)
+
+### Task 6
+
+- Run the rulebook webhook_rulebook.yml in verbose mode.
+```bash
+ansible-rulebook --rulebook 11-webhook_rulebook.yaml -i inventory/hosts --verbose
+```
+- Send the string “webservers running” to the webhook.
+```bash
+curl -H 'Content-Type: application/json' -d "{\"message\": \"webservers running\"}" 127.0.0.1:5000/endpoint
+```
+- Now send the message “webservers down” to the webhook. See how the playbook webserver.yml is run.
+```bash
+curl -H 'Content-Type: application/json' -d "{\"message\": \"webservers down\"}" 127.0.0.1:5000/endpoint
+```
+
+### Task 7
+
+[`11-complex_rulebook.yaml`](ansible/11-complex_rulebook.yaml)
+Run with
+```bash
+ansible-rulebook --rulebook 11-complex_rulebook.yaml -i inventory/hosts --verbose
+```
+Check with
+```bash
+curl -H 'Content-Type: application/json' -d "{\"message\": \"webservers down\"}" 127.0.0.1:5000/endpoint
+```

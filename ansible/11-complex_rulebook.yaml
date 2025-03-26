@@ -1,0 +1,28 @@
+---
+- name: Complex rulebook
+  hosts: web
+  sources:
+    - name: Check webserver url status
+      ansible.eda.url_check:
+        urls:
+          - http://192.168.0.26
+          - http://192.168.0.27
+        delay: 8
+    - name: Listen webhook
+      ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5000
+  rules:
+    - name: Check webservers status and rebuild
+      condition:
+        any:
+          - event.url_check.status == "down"
+          - event.payload.message == "webservers down"
+          - event.payload.message is search("ERROR",ignorecase=true)
+      actions:
+        - run_module:
+            name: ansible.builtin.shell
+            module_args:
+              cmd: "systemd-cat echo \"WEBSERVER ISSUES, REMEDIATION IN PROGRESS.\""
+        - run_playbook:
+            name: playbooks/04-webserver.yaml
