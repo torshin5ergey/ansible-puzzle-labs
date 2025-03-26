@@ -1,0 +1,40 @@
+---
+- name: Run tasks on webservers
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Install apache2 and ufw
+      ansible.builtin.apt:
+        name:
+          - apache2
+          - ufw
+        state: present
+        update_cache: true
+
+    - name: Start and enable services
+      ansible.builtin.systemd:
+        name: "{{ item }}"
+        state: started
+        enabled: true
+      loop:
+        - apache2
+        - ufw
+
+    - name: Ensure port 80 is open on the ufw
+      ansible.builtin.command: "ufw allow 80/tcp"
+      register: my_output
+      changed_when: my_output.rc != 0
+
+- name: Run tasks on dbservers
+  hosts: db
+  become: true
+  vars:
+    motd_content: "This is a database server\n"
+
+  tasks:
+    - name: Set content of /etc/motd
+      ansible.builtin.copy:
+        dest: /etc/motd
+        content: "{{ motd_content }}"
+        mode: "0644"

@@ -17,12 +17,12 @@ sudo apt update && sudo apt install ansible -y
 
 - Ping hosts
 ```bash
-ansible all:!controller -i inventory/hosts.ini -m ping
+ansible all:!controller -i inventory/hosts -m ping
 ```
 
 ### Task 5
 
-[`hosts.ini`](ansible/inventory/hosts.ini)
+[`hosts`](ansible/inventory/hosts)
 
 ## 2. Documentation
 
@@ -43,20 +43,20 @@ https://ansible.puzzle.ch/docs/03/
 
 - Ping all `nodes` with `ansible.builtin.ping`
 ```bash
-ansible nodes -i inventory/hosts.ini -m ping
+ansible nodes -i inventory/hosts -m ping
 ```
 
 ### Task 2
 
 - Gather all facts from `nodes`
 ```bash
-ansible nodes -i inventory/hosts.ini -m gather_facts
+ansible nodes -i inventory/hosts -m gather_facts
 # or
-ansible nodes -i inventory/hosts.ini -m setup
+ansible nodes -i inventory/hosts -m setup
 ```
 - Gather only `ansible_default_ipv4` fact from all `nodes`
 ```bash
-ansible nodes -i inventory/hosts.ini -m setup -a "filter=ansible_default_ipv4"
+ansible nodes -i inventory/hosts -m setup -a "filter=ansible_default_ipv4"
 ```
 
 ### Tasks 3-4
@@ -71,39 +71,39 @@ ansible-doc -s hostname
 
 - Setup `hostname` on all hosts using the inventory
 ```bash
-ansible nodes -i inventory/hosts.ini -b -m hostname -a "name={{ inventory_hostname }}"
-ansible nodes -i inventory/hosts.ini -a "cat /etc/hostname"
+ansible nodes -i inventory/hosts -b -m hostname -a "name={{ inventory_hostname }}"
+ansible nodes -i inventory/hosts -a "cat /etc/hostname"
 ```
 
 ### Task 6
 
 - Install `apache2` on `web`
 ```bash
-ansible web inventory/hosts.ini -b -m apt -a "name=apache2 state=installed"
+ansible web inventory/hosts -b -m apt -a "name=apache2 state=installed"
 ```
 - Start and enable `apache2`
 ```bash
-ansible web inventory/hosts.ini -b -m systemd -a "name=apache2 state=started enabled=true"
+ansible web inventory/hosts -b -m systemd -a "name=apache2 state=started enabled=true"
 ```
 - Revert changes
 ```bash
-ansible web -i inventory/hosts.ini -b -m systemd -a "name=apache2 state=stopped enabled=false"
-ansible web -i inventory/hosts.ini -b -m apt -a "name=apache2 state=absent"
+ansible web -i inventory/hosts -b -m systemd -a "name=apache2 state=stopped enabled=false"
+ansible web -i inventory/hosts -b -m apt -a "name=apache2 state=absent"
 ```
 
 ### Task 7
 
 - Create file `/etc/ansible/testfile.txt` on `ap-worker-node2`
 ```bash
-ansible ap-worker-node2 -i inventory/hosts.ini -m file -a "path=/home/ansible/testfile.txt state=touch"
+ansible ap-worker-node2 -i inventory/hosts -m file -a "path=/home/ansible/testfile.txt state=touch"
 ```
 - Paste custom test into the file using `copy` module
 ```bash
-ansible ap-worker-node2 -i inventory/hosts.ini -m copy -a "dest=/home/ansible/testfile.txt content='custom text'"
+ansible ap-worker-node2 -i inventory/hosts -m copy -a "dest=/home/ansible/testfile.txt content='custom text'"
 ```
 - Remove the file
 ```bash
-ansible ap-worker-node2 -i inventory/hosts.ini -m file -a "path=/home/ansible/testfile.txt state=absent"
+ansible ap-worker-node2 -i inventory/hosts -m file -a "path=/home/ansible/testfile.txt state=absent"
 ```
 
 ## 4. Ansible Playbooks - Basics
@@ -801,6 +801,11 @@ ansible-navigator run playbooks/10-container.yaml
 - [`10-default-ee.yaml`](ansible/10-default-ee.yaml)
 - [`10-requirements.yaml`](ansible/10-requirements.yaml)
 - [`10-requirements.txt`](ansible/10-requirements.txt)
+```bash
+ansible-builder build -f 10-default-ee.yaml -t default-ee -vvv
+
+ansible-navigator images
+```
 
 ### Task 6
 
@@ -816,6 +821,24 @@ https://ansible.puzzle.ch/docs/10/02/
 ```bash
 ansible-runner --version
 ansible-runner --help
+```
+
+### Task 2
+
+- Set up the folder structure needed by ansible-runner to find your inventory and put your playbook in the correct folder as well.
+https://ansible.readthedocs.io/projects/runner/en/stable/intro/
+```
+.
+...
+├── inventory
+│   └── hosts # without extension
+└── project
+    └── 10-site.yaml
+...
+```
+- Use ansible-runner to run the play `site.yml`.
+```bash
+ansible-runner run . -p 10-site.yaml
 ```
 
 ## 11. Event Driven Ansible
