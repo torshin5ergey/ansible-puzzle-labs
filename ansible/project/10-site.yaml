@@ -26,6 +26,11 @@
       register: my_output
       changed_when: my_output.rc != 0
 
+    - name: Sleep
+      # https://docs.ansible.com/ansible/2.9/modules/pause_module.html#pause-module
+      ansible.builtin.pause:
+        seconds: 120
+
 - name: Run tasks on dbservers
   hosts: db
   become: true

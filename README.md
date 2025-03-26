@@ -841,4 +841,12 @@ https://ansible.readthedocs.io/projects/runner/en/stable/intro/
 ansible-runner run . -p 10-site.yaml
 ```
 
+### Task 3
+
+- Runner artifacts directory
+https://ansible.readthedocs.io/projects/runner/en/stable/intro/#runner-artifacts-directory-hierarchy
+```
+artifacts/
+```
+
 ## 11. Event Driven Ansible
