@@ -1,8 +1,8 @@
 ---
-- name: Rebuild webservers
+- name: Rebuild webservers if webhook receives message
   hosts: web
   sources:
-    - name: Check webserver
+    - name: Start 
       ansible.eda.url_check:
         urls:
           - http://192.168.0.26
